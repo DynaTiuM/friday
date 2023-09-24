@@ -27,6 +27,8 @@ function useNeuralNetwork(entrée) {
   return sortie;
 }
 
+//test
+
 function saveLearnedData() {
   const learnedData = JSON.stringify(net.toJSON());
 
