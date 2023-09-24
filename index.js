@@ -11,14 +11,14 @@ const net = new brain.recurrent.LSTM({
 });
 
 const options = {
-  iterations: 700,
+  iterations: 1000,
   log: (error) => console.log(error),
 };
 const trainingData = JSON.parse(fs.readFileSync('trainingData.json', 'utf-8'));
 
-//net.train(trainingData, options);
-//saveLearnedData();
-loadLearnedData();
+net.train(trainingData, options);
+saveLearnedData();
+//loadLearnedData();
 
 
 function useNeuralNetwork(entrée) {
@@ -26,8 +26,6 @@ function useNeuralNetwork(entrée) {
   console.log(sortie);
   return sortie;
 }
-
-//test
 
 function saveLearnedData() {
   const learnedData = JSON.stringify(net.toJSON());
