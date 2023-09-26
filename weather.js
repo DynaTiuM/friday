@@ -46,7 +46,7 @@ async function getWeatherForCity(cityName, day) {
 }
 
 async function findCity(message, day) {
-    for (const city of cities) {
+    for (var city of cities) {
         message = message.toLowerCase();
         city = city.toLowerCase();
         console.log("searching city : " + city);
@@ -54,15 +54,16 @@ async function findCity(message, day) {
             console.log("City found : " + city);
             return await sendMessage( await getWeatherForCity(city, day), city, day);
         }
+        else {
+            return "Désolé, je n'ai pas compris. De quelle ville parlez-vous ?"
+        }
     }
-
-    console.log("City not found.");
 }
 
 function sendMessage(data, cityName, day) {
     type = getWeatherType(data, day);
     if(day === "aujourd'hui") return `La météo actuelle à ${cityName} est **${type}**. La température actuelle est de **${data.main.temp}°C**. Les températures maximales seront de **${data.main.temp_max}°C** et les minimales de **${data.main.temp_min}°C**.`
-    else if(day === "demain") return `La météo demain à ${cityName} sera **${type}**. La température actuelle sera de **${data.list[0].main.temp}°C**. Les températures maximales seront de **${data.list[0].main.temp_max}°C** et les minimales de **${data.list[0].main.temp_min}°C**.`
+    else if(day === "demain") return `La météo demain à ${cityName} sera **${type}**. La température sera de **${data.list[0].main.temp}°C**. Les températures maximales seront de **${data.list[0].main.temp_max}°C** et les minimales de **${data.list[0].main.temp_min}°C**.`
 
 }
 

@@ -6,12 +6,12 @@ const getWeather = require('./weather');
 const discordToken = process.env.DISCORD_TOKEN;
 
 const net = new brain.recurrent.LSTM({
-  hiddenLayers: [50, 50],
+  hiddenLayers: [30, 30],
   activation: 'sigmoid',
 });
 
 const options = {
-  iterations: 700,
+  iterations: 1100,
   log: (error) => console.log(error),
 };
 const trainingData = JSON.parse(fs.readFileSync('trainingData.json', 'utf-8'));
@@ -79,7 +79,7 @@ client.on("messageCreate", async message => {
     }
     else {
       switch (response) {
-        case "meteo-":
+        case "meteo":
         if(message.content.includes("aujourd'hui")) {
             console.log("ajd");
             message.channel.send(await getWeather(message.content, "aujourd'hui"));

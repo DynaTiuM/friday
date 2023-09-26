@@ -15,7 +15,6 @@
     { "input": "comment tu vas ?", "output": "je vais bien, merci!"  },
     { "input": "comment vas-tu ?", "output": "je vais bien, merci!"  },
     { "input": "Ça va ?", "output": "je vais bien, merci!"  },
-    { "input": "ca va toi ?", "output": "je vais bien, merci!"  },
     { "input": "je vais bien et toi ?", "output": "je vais bien, merci!"  },
     { "input": "je vais nickel et toi ?", "output": "je vais bien, merci!"  },
     { "input": "tu vas bien ?", "output": "je vais bien, merci!"  },
