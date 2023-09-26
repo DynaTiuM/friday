@@ -20,6 +20,8 @@ net.train(trainingData, options);
 saveLearnedData();
 //loadLearnedData();
 
+//test
+
 
 function useNeuralNetwork(entry) {
   const exit = net.run(entry);
