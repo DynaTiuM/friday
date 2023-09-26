@@ -11,7 +11,7 @@ const net = new brain.recurrent.LSTM({
 });
 
 const options = {
-  iterations: 1000,
+  iterations: 700,
   log: (error) => console.log(error),
 };
 const trainingData = JSON.parse(fs.readFileSync('trainingData.json', 'utf-8'));
@@ -21,10 +21,10 @@ saveLearnedData();
 //loadLearnedData();
 
 
-function useNeuralNetwork(entrée) {
-  const sortie = net.run(entrée);
-  console.log(sortie);
-  return sortie;
+function useNeuralNetwork(entry) {
+  const exit = net.run(entry);
+  console.log(exit);
+  return exit;
 }
 
 function saveLearnedData() {
@@ -68,19 +68,27 @@ client.on("ready", () => {
   console.log("bot opérationnel");
 });
 
-client.on("messageCreate",async message => {
+client.on("messageCreate", async message => {
 
   if (message.content.startsWith('!')) {
-    const entrée = message.content.substring(1);
-    const response = useNeuralNetwork(entrée);
+    const entry = message.content.substring(1);
+    const response = useNeuralNetwork(entry);
 
     if (response == null || response == '') {
       message.channel.send("Désolé, je n'ai pas compris ton message.");
     }
     else {
       switch (response) {
-        case "meteo-": 
-          message.channel.send(await getWeather(message.content));
+        case "meteo-":
+        if(message.content.includes("aujourd'hui")) {
+            console.log("ajd");
+            message.channel.send(await getWeather(message.content, "aujourd'hui"));
+        }
+        else {
+          console.log("demain");
+          message.channel.send(await getWeather(message.content, "demain"));
+        }
+        
         break;
         default : message.channel.send(response);
         break;
