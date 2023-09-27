@@ -54,10 +54,9 @@ async function findCity(message, day) {
             console.log("City found : " + city);
             return await sendMessage( await getWeatherForCity(city, day), city, day);
         }
-        else {
-            return "Désolé, je n'ai pas compris. De quelle ville parlez-vous ?"
-        }
     }
+    
+    return "Désolé, je n'ai pas compris. De quelle ville parlez-vous ?"
 }
 
 function sendMessage(data, cityName, day) {

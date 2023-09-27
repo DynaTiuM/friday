@@ -16,9 +16,9 @@ const options = {
 };
 const trainingData = JSON.parse(fs.readFileSync('trainingData.json', 'utf-8'));
 
-net.train(trainingData, options);
-saveLearnedData();
-//loadLearnedData();
+//net.train(trainingData, options);
+//saveLearnedData();
+loadLearnedData();
 
 //test
 
