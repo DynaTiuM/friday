@@ -26,8 +26,6 @@ function useNeuralNetwork(entry) {
   return exit;
 }
 
-//test 2
-
 function saveLearnedData() {
   const learnedData = JSON.stringify(net.toJSON());
 
@@ -81,15 +79,15 @@ client.on("messageCreate", async message => {
     else {
       switch (response) {
         case "meteo":
-        if(message.content.includes("aujourd'hui")) {
-            console.log("ajd");
-            message.channel.send(await getWeather(message.content, "aujourd'hui"));
-        }
-        else {
-          console.log("demain");
-          message.channel.send(await getWeather(message.content, "demain"));
-        }
-        
+          if(message.content.includes("aujourd'hui")) {
+              message.channel.send(await getWeather(message.content, "aujourd'hui"));
+          }
+          else {
+            message.channel.send(await getWeather(message.content, "demain"));
+          }
+        break;
+        case "liste-courses":
+          message.channel.send("Très bien, j'ajoute à ta liste de courses.");
         break;
         default : message.channel.send(response);
         break;
