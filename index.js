@@ -20,9 +20,6 @@ const trainingData = JSON.parse(fs.readFileSync('trainingData.json', 'utf-8'));
 //saveLearnedData();
 loadLearnedData();
 
-//test
-
-
 function useNeuralNetwork(entry) {
   const exit = net.run(entry);
   console.log(exit);
